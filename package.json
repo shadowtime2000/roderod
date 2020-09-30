@@ -1,6 +1,6 @@
 {
   "name": "roderod",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A useless little programming language",
   "main": "src/index.js",
   "scripts": {
