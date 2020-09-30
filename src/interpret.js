@@ -10,7 +10,7 @@ module.exports = (ast) => {
           .replace(/{val}/, data[curloc] || "none")
       );
     } else if (statement.func === "set") {
-      data[curloc] = statement.params[0];
+      data[curloc] = statement.params.join(" ");
     } else if (statement.func === "up") {
       curloc += statement.params[0] || 1;
     } else if (statement.func === "down") {
