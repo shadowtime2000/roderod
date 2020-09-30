@@ -33,7 +33,7 @@ module.exports = (ast) => {
       ).repeat(statement.params[0]);
       parse(loopProgram).body.map((statement) => interp(statement));
     } else if (statement.func === "eval") {
-      eval(statement.params[0]);
+      eval(statement.params[0].replace(/{loc}/, curloc).replace(/{val}/, data[curloc] || "none"));
     }
   };
   ast.body.map((statement) => interp(statement));
