@@ -1,3 +1,5 @@
+const parse = require("./parser")
+
 module.exports = (ast) => {
   let data = {};
   let curloc = 0;
@@ -23,6 +25,11 @@ module.exports = (ast) => {
       if (!statement.params[0].search(/[0-9]+/) === 0)
         throw new TypeError("Expected number got something else!");
       curloc = statement.params[0] || 0;
+    } else if (statement.func === "loop") {
+      if (!statement.params[0].search(/[0-9]+/) === 0)
+        throw new TypeError("Expected number got something else!");
+        const loopProgram = (statement.params.slice(1, statement.params.length).join("->") + "\n").repeat(statement.params[0])
+        parse(loopProgram).body.map((statement) => interp(statement))
     }
   };
   ast.body.map((statement) => interp(statement));
