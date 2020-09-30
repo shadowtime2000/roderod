@@ -12,10 +12,13 @@ module.exports = (ast) => {
     } else if (statement.func === "set") {
       data[curloc] = statement.params.join(" ");
     } else if (statement.func === "up") {
+      if (!statement.params.search(/[0-9]+/) === 0) throw new TypeError("Expected number got something else!")
       curloc += statement.params[0] || 1;
     } else if (statement.func === "down") {
+      if (!statement.params.search(/[0-9]+/) === 0) throw new TypeError("Expected number got something else!")
       curloc -= statement.params[0] || 1;
     } else if (statement.func === "move") {
+        if (!statement.params.search(/[0-9]+/) === 0) throw new TypeError("Expected number got something else!")
         curloc = statement.params[0] || 0;
     }
   });
