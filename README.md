@@ -2,7 +2,7 @@
 A useless little programming language
 
 ## Installation
-`npm install roderod`
+`npm install roderod`  
 If you want to install the CLI - `npm install -g roderod`
 `roderod helloworld.rr`
 
