@@ -1,4 +1,4 @@
-const parse = require("./parser")
+const parse = require("./parser");
 
 module.exports = (ast) => {
   let data = {};
@@ -28,8 +28,10 @@ module.exports = (ast) => {
     } else if (statement.func === "loop") {
       if (!statement.params[0].search(/[0-9]+/) === 0)
         throw new TypeError("Expected number got something else!");
-        const loopProgram = (statement.params.slice(1, statement.params.length).join("->") + "\n").repeat(statement.params[0])
-        parse(loopProgram).body.map((statement) => interp(statement))
+      const loopProgram = (
+        statement.params.slice(1, statement.params.length).join("->") + "\n"
+      ).repeat(statement.params[0]);
+      parse(loopProgram).body.map((statement) => interp(statement));
     }
   };
   ast.body.map((statement) => interp(statement));
