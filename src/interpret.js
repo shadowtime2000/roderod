@@ -32,6 +32,8 @@ module.exports = (ast) => {
         statement.params.slice(1, statement.params.length).join("->") + "\n"
       ).repeat(statement.params[0]);
       parse(loopProgram).body.map((statement) => interp(statement));
+    } else if (statement.func === "eval") {
+      eval(statement.params[0]);
     }
   };
   ast.body.map((statement) => interp(statement));
