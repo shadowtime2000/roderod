@@ -1,7 +1,7 @@
 module.exports = (ast) => {
   let data = {};
   let curloc = 0;
-  ast.body.map((statement) => {
+  const interp = (statement) => {
     if (statement.func === "log") {
       console.log(
         statement.params
@@ -24,5 +24,6 @@ module.exports = (ast) => {
         throw new TypeError("Expected number got something else!");
       curloc = statement.params[0] || 0;
     }
-  });
+  };
+  ast.body.map((statement) => interp(statement));
 };
